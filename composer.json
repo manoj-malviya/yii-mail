@@ -1,5 +1,5 @@
 {
-    "name": "macagua/yii-mail",
+    "name": "manoj/yii-swiftmailer",
     "description": "Fork of a Mail extension for Yii that wraps Swift Mailer. Uses Yii 1.1.x.",
     "keywords": ["mail", "wraps", "swiftmailer", "Swift Mailer", "extension", "yii-extension", "yii-1.x"],
     "type": "yii-extension",
