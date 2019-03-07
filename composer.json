@@ -1,5 +1,5 @@
 {
-    "name": "manoj/yii-swiftmailer",
+    "name": "meneo/yii-swiftmailer",
     "description": "Fork of a Mail extension for Yii that wraps Swift Mailer. Uses Yii 1.1.x.",
     "keywords": ["mail", "wraps", "swiftmailer", "Swift Mailer", "extension", "yii-extension", "yii-1.x"],
     "type": "yii-extension",
@@ -42,6 +42,6 @@
     ],
     "minimum-stability": "dev",
     "autoload": {
-        "psr-4": { "manoj\\swiftmailer\\": "src" }
+        "psr-4": { "meneo\\swiftmailer\\": "src" }
     }
 }

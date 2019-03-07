@@ -1,5 +1,5 @@
 <?php
-namespace manoj\swiftmailer;
+namespace meneo\swiftmailer;
 /**
 * YiiMail class file.
 *
