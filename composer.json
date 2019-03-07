@@ -5,7 +5,8 @@
     "type": "yii-extension",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii": "1.1.16"
+        "yiisoft/yii": "1.1.16",
+        "swiftmailer/swiftmailer": "^6.0"
     },
     "license": "BSD-3-Clause",
     "homepage": "http://www.yiiframework.com/extension/mail/",
@@ -31,10 +32,16 @@
             "email": "leonardocaballero@gmail.com",
             "homepage": "https://github.com/macagua",
             "role": "Package maintainer"
+        },
+        {
+            "name": "Manoj Malviya",
+            "email": "manojm@girnarsoft.com",
+            "homepage": "https://github.com/manoj-malviya",
+            "role": "Package maintainer"
         }
     ],
     "minimum-stability": "dev",
-    "autoload" : {
-        "classmap" : ["YiiMail.php"]
+    "autoload": {
+        "psr-4": { "manoj\\swiftmailer\\": "src" }
     }
 }

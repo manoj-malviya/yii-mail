@@ -1,4 +1,5 @@
 <?php
+namespace manoj\swiftmailer;
 /**
 * YiiMailMessage class file.
 *
@@ -33,7 +34,7 @@
 * 	<li>attach(Swift_Attachment::fromPath('my-document.pdf'))</li>
 * </ul>
 */
-class YiiMailMessage extends CComponent {
+class YiiMailMessage extends \CComponent {
 	
 	/**
 	* @var string the view to use for rendering the body, null if no view is 
@@ -55,7 +56,7 @@ class YiiMailMessage extends CComponent {
 	public function __get($name) {
 		try {
 			return parent::__get($name);
-		} catch (CException $e) {
+		} catch (\CException $e) {
 			$getter = 'get'.$name;
 			if(method_exists($this->message, $getter))
 				return $this->message->$getter();
@@ -72,7 +73,7 @@ class YiiMailMessage extends CComponent {
 	public function __set($name, $value) {
 		try {
 			return parent::__set($name, $value);
-		} catch (CException $e) {
+		} catch (\CException $e) {
 			$setter = 'set'.$name;
 			if(method_exists($this->message, $setter))
 				$this->message->$setter($value);
@@ -89,7 +90,7 @@ class YiiMailMessage extends CComponent {
 	public function __call($name, $parameters) {
 		try {
 			return parent::__call($name, $parameters);	
-		} catch (CException $e) {
+		} catch (\CException $e) {
 			if(method_exists($this->message, $name))
 				return call_user_func_array(array($this->message, $name), $parameters);
 			else
@@ -109,7 +110,7 @@ class YiiMailMessage extends CComponent {
 	* @return Swift_Mime_Message
 	*/
 	public function __construct($subject = null, $body = null, $contentType = null, $charset = null) {
-		Yii::app()->mail->registerScripts();
+		\Yii::app()->mail->registerScripts();
 		$this->message = Swift_Message::newInstance($subject, $body, $contentType, $charset);
 	}
 
@@ -131,15 +132,15 @@ class YiiMailMessage extends CComponent {
 			
 			// if Yii::app()->controller doesn't exist create a dummy 
 			// controller to render the view (needed in the console app)
-			if(isset(Yii::app()->controller))
-				$controller = Yii::app()->controller;
+			if(isset(\Yii::app()->controller))
+				$controller = \Yii::app()->controller;
 			else
-				$controller = new CController('YiiMail');
+				$controller = new \CController('YiiMail');
 			
 			// renderPartial won't work with CConsoleApplication, so use 
 			// renderInternal - this requires that we use an actual path to the 
 			// view rather than the usual alias
-			$viewPath = Yii::getPathOfAlias(Yii::app()->mail->viewPath.'.'.$this->view).'.php';
+			$viewPath = \Yii::getPathOfAlias(\Yii::app()->mail->viewPath.'.'.$this->view).'.php';
 			$body = $controller->renderInternal($viewPath, array_merge($body, array('mail'=>$this)), true);	
 		}
 		return $this->message->setBody($body, $contentType, $charset);

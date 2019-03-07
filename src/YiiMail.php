@@ -1,4 +1,5 @@
 <?php
+namespace manoj\swiftmailer;
 /**
 * YiiMail class file.
 *
@@ -42,7 +43,7 @@
 * Yii::app()->mail->send($message);
 * </pre>
 */
-class YiiMail extends CApplicationComponent
+class YiiMail extends \CApplicationComponent
 {
 	/**
 	* @var bool whether to log messages using Yii::log().
@@ -103,7 +104,7 @@ class YiiMail extends CApplicationComponent
 	* Calls the {@link registerScripts()} method.
 	*/
 	public function init() {
-		$this->registerScripts();
+		//$this->registerScripts();
 		parent::init();	
 	}
 	
@@ -190,7 +191,7 @@ class YiiMail extends CApplicationComponent
 			implode('', $message->headers->getAll())."\n".
 			$message->body
 		;
-		Yii::log($msg, CLogger::LEVEL_INFO, 'ext.yii-mail.YiiMail'); // TODO: attempt to determine alias/category at runtime
+		Yii::log($msg, \CLogger::LEVEL_INFO, 'ext.yii-mail.YiiMail'); // TODO: attempt to determine alias/category at runtime
 		return $msg;
 	}
 
@@ -226,7 +227,7 @@ class YiiMail extends CApplicationComponent
 	*/
 	public function getMailer() {
 		if ($this->mailer===null)
-			$this->mailer = Swift_Mailer::newInstance($this->getTransport());
+			$this->mailer = \Swift_Mailer::newInstance($this->getTransport());
 			
 		return $this->mailer;
 	}
